@@ -159,25 +159,29 @@ export function AppLayout() {
 
           <div className="my-3 border-t border-sidebar-border" />
 
-          <p className="px-3 pb-1 text-[10px] font-semibold uppercase tracking-[0.12em] text-sidebar-foreground/40">
-            Cambiar rol (mock)
-          </p>
-          <div className="space-y-0.5">
-            {ALL_ROLES.map((rol) => (
-              <button
-                key={rol}
-                type="button"
-                onClick={() => handleSwitchRole(rol)}
-                className={`w-full text-left px-3 py-1.5 rounded-lg text-xs capitalize transition-all ${
-                  me.rol === rol
-                    ? 'bg-primary/10 text-primary font-medium glow-sm'
-                    : 'text-sidebar-foreground/50 hover:bg-accent hover:text-accent-foreground'
-                }`}
-              >
-                {rol}
-              </button>
-            ))}
-          </div>
+          {import.meta.env.VITE_USE_MOCKS === 'true' && (
+            <>
+              <p className="px-3 pb-1 text-[10px] font-semibold uppercase tracking-[0.12em] text-sidebar-foreground/40">
+                Cambiar rol (mock)
+              </p>
+              <div className="space-y-0.5">
+                {ALL_ROLES.map((rol) => (
+                  <button
+                    key={rol}
+                    type="button"
+                    onClick={() => handleSwitchRole(rol)}
+                    className={`w-full text-left px-3 py-1.5 rounded-lg text-xs capitalize transition-all ${
+                      me.rol === rol
+                        ? 'bg-primary/10 text-primary font-medium glow-sm'
+                        : 'text-sidebar-foreground/50 hover:bg-accent hover:text-accent-foreground'
+                    }`}
+                  >
+                    {rol}
+                  </button>
+                ))}
+              </div>
+            </>
+          )}
         </nav>
 
         <div className="px-3 py-3 border-t border-sidebar-border">
